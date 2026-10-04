@@ -8,9 +8,18 @@
 </head>
 <body>
 
+<div id="inappBanner" class="inapp" hidden>
+  <strong>⚠ ডাউনলোডের জন্য ব্রাউজারে খুলুন</strong>
+  <p id="inappTip"></p>
+  <div class="row">
+    <button type="button" class="btn primary" id="openExternal">Chrome-এ খুলুন</button>
+    <button type="button" class="btn" id="copyLink">লিংক কপি করুন</button>
+  </div>
+</div>
+
 <header class="top">
   <h1>প্রচার পোস্টার মেকার</h1>
-  <p>আপনার ছবি ও নাম দিন, পোস্টারে ডান পাশের নিচের ফ্রেমে ছবি এবং "প্রচারে" লেখার নিচে নাম বসে যাবে।</p>
+  <p>আপনার ছবি ও নাম দিন — পোস্টারে ডান পাশের নিচের ফ্রেমে ছবি এবং "প্রচারে" লেখার নিচে নাম বসে যাবে।</p>
 </header>
 
 <main class="layout">
@@ -51,7 +60,7 @@
     <div class="card">
       <div class="step"><span>২</span> আপনার নাম (বাংলায়)</div>
       <input type="text" id="name" class="text" lang="bn" maxlength="40"
-             placeholder="আপনার নাম" autocomplete="off" spellcheck="false">
+             placeholder="যেমন: মোঃ সুজাব আলী" autocomplete="off" spellcheck="false">
       <small class="muted">নামটি স্বয়ংক্রিয়ভাবে পোস্টারের মাপে বসে যাবে। বড় নাম হলে লেখা একটু ছোট হবে।</small>
     </div>
 
@@ -61,6 +70,10 @@
         <button type="button" class="btn primary" id="dlPng">PNG ডাউনলোড</button>
         <button type="button" class="btn" id="dlJpg">JPG ডাউনলোড</button>
       </div>
+      <div class="row" style="margin-top:10px">
+        <button type="button" class="btn ghost" id="viewSave">ছবি দেখুন ও সেভ করুন (ডাউনলোড না হলে)</button>
+      </div>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
       <small class="muted" id="dlNote">ছবির সাইজ: ২০৪৮ × ২০৪৮ পিক্সেল (প্রিন্ট ও সোশ্যাল মিডিয়ার জন্য উপযুক্ত)। ফোনে ডাউনলোড না হলে প্রিভিউ ছবিটি চেপে ধরে সেভ করুন।</small>
     </div>
 
@@ -68,6 +81,17 @@
 </main>
 
 <footer class="foot">ছবি আপনার ডিভাইসেই প্রসেস হয় — কোনো সার্ভারে আপলোড হয় না।</footer>
+
+<div id="saveOverlay" class="overlay" hidden>
+  <div class="overlay-box">
+    <p class="overlay-tip">ছবিটি <b>চেপে ধরে রাখুন</b> → <b>"Save image / ছবি সেভ করুন"</b> বেছে নিন।</p>
+    <img id="saveImg" alt="আপনার পোস্টার">
+    <div class="row">
+      <button type="button" class="btn primary" id="shareBtn" hidden>শেয়ার / সেভ</button>
+      <button type="button" class="btn" id="closeOverlay">বন্ধ করুন</button>
+    </div>
+  </div>
+</div>
 
 <script src="template.js"></script>
 <script src="script.js"></script>
